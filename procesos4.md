@@ -1,0 +1,27 @@
+```mermaid
+graph TD;
+    A[Inicio] -->|Cliente se registra| B(Registro de Clientes);
+    B -->|Cliente reserva hora| C(Registro de Reserva de Hora);
+    C -->|Ingreso de proveedor| D(Registro de Proveedor);
+    D -->|Registro de servicios| E(Registro de Servicios);
+    E -->|Registro de orden de pedido| F(Registro de Orden de Pedido);
+    F -->|Recepción de producto| G(Recepción de Producto);
+    G -->|Comparar con orden de pedido| H[Coincide con la orden de pedido?];
+    H -->|Sí| I(Actualizar inventario y Almacenar producto);
+    H -->|No| G;
+    I -->|Generar factura/boleta| J(Registro Factura/Boleta);
+    J -->|Registrar pago| K(Registro de Pagos);
+    K -->|Gestión de empleados| L(Registro de Empleado);
+    L -->|Informes y Estadísticas| M(Informes y Estadísticas);
+    M -->|Administrar Boletas| N(Módulo de Administración de Boleta);
+    N -->|Administrar Clientes| O(Módulo de Administración de Clientes);
+    O -->|Administrar Orden de Pedido| P(Módulo de Administración de Orden de Pedido);
+    P -->|Fin| Q[Fin];
+    C -.->|Solicitar productos| F;
+    E -.->|Solicitar servicio| B;
+    J -.->|Enviar factura por correo| A;
+    L -.->|Asignar tareas| D;
+    N -.->|Generar reportes de ventas| M;
+    O -.->|Gestionar créditos| B;
+    P -.->|Modificar órdenes| F;
+    Q -->|Solicitar servicio nuevamente| B;
